@@ -1,31 +1,32 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import React, { useRef } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-const ScrollTrigger = () => {
+gsap.registerPlugin(ScrollTrigger)
+
+const Scrolltrigger = () => {
     const box1ref=useRef(null)
     const box2ref=useRef(null)
     const box3ref=useRef(null)
-    const tl=gsap.timeline()
-    useGSAP(()=>{
-        tl.from(box1ref.current,{
-            scale:0,
-            duration:1.5
-        })
-    })
-    useGSAP(()=>{
-        tl.from(box2ref.current,{
-            scale:0,
-            duration:1.5
-        })
-    })
+    
 
-    // useGSAP(()=>{
-    //     gsap.from(box1ref.current,{
-    //         scale:0,
-    //         duration:1.5
-    //     })
-    // })
+    useGSAP(()=>{
+        gsap.from(box1ref.current,{
+            scale:0,
+            duration:1.5
+        })
+    })
+    useGSAP(()=>{
+        gsap.from(box2ref.current,{
+            scale:0,
+            duration:1.5,
+            scrollTrigger:{
+                trigger:box2ref.current,
+                scroller:'body'
+            }
+        })
+    })
   return (
     <div className='overflow-hidden'>
       <div className='h-screen w-screen bg-amber-300 flex items-center justify-center'>
@@ -41,4 +42,4 @@ const ScrollTrigger = () => {
   )
 }
 
-export default ScrollTrigger
+export default Scrolltrigger
