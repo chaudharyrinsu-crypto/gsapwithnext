@@ -23,7 +23,11 @@ const Scrolltrigger = () => {
             duration:1.5,
             scrollTrigger:{
                 trigger:box2ref.current,
-                scroller:'body'
+                scroller:'body',
+                // markers:true,
+                start:'top 60%',
+                end:'top 30%',
+                scrub:2
             }
         })
     })
